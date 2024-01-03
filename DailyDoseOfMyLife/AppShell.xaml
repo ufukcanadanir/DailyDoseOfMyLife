@@ -3,13 +3,20 @@
     x:Class="DailyDoseOfMyLife.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:DailyDoseOfMyLife"
+    xmlns:local="clr-namespace:DailyDoseOfMyLife.View"
     Shell.FlyoutBehavior="Disabled"
     Title="DailyDoseOfMyLife">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <TabBar x:Name="TabBar">
+        <Tab Title="Home" Icon="tab_home.svg">
+            <ShellContent ContentTemplate="{DataTemplate local:HomePage}" Route="HomePage"/>
+        </Tab>
+        <Tab Title="Calendar" Icon="tab_calendar.svg">
+            <ShellContent ContentTemplate="{DataTemplate local:CalendarPage}" Route="CalendarPage"/>
+        </Tab>
+        <Tab Title="Profile" Icon="tab_profile.svg">
+            <ShellContent ContentTemplate="{DataTemplate local:ProfilePage}" Route="ProfilePage"/>
+        </Tab>
+    </TabBar>
 
 </Shell>
