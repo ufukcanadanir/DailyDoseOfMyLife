@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DailyDoseOfMyLife.View.AddEventPage"
+             Title="AddEventPage">
+    <VerticalStackLayout>
+        <Frame BorderColor="Silver" Padding="10,2,10,2" >
+            <HorizontalStackLayout>
+                <Label Text="Name" VerticalOptions="Center" WidthRequest="100"></Label>
+                <Entry x:Name="NameEntry" VerticalOptions="Center" WidthRequest="200"></Entry>
+            </HorizontalStackLayout>
+        </Frame>
+
+        <Frame BorderColor="Silver" Padding="10,2,10,2" >
+            <HorizontalStackLayout>
+                <Label Text="Description" VerticalOptions="Center" WidthRequest="100"></Label>
+                <Entry x:Name="DescriptionEntry" VerticalOptions="Center" WidthRequest="200"></Entry>
+            </HorizontalStackLayout>
+        </Frame>
+        <Button Text="Save" x:Name="SaveButton" Clicked="SaveButton_Clicked"></Button>
+        <Button Text="Go Back" x:Name="BackButton" Clicked="BackButton_Clicked"></Button>
+    </VerticalStackLayout>
+</ContentPage>

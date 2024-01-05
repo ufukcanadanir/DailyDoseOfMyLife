@@ -3,9 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DailyDoseOfMyLife.View.HomePage"
              Title="HomePage">
-    <VerticalStackLayout>
-        <Label
-     Text="Hello, World!"
-     Style="{StaticResource Headline}"/>
+    <VerticalStackLayout Padding="10">
+        <Button Text="Add Event" Clicked="AddEventButton_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>
