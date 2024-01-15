@@ -19,15 +19,10 @@ namespace DailyDoseOfMyLife.Model
             eventDatabase = new SQLiteAsyncConnection(dbPath);
             eventDatabase.CreateTableAsync<EventInfo>(CreateFlags.AllImplicit | CreateFlags.AutoIncPK).GetAwaiter().GetResult();
         }
-        public async Task<ObservableCollection<EventInfo>> GetAllEvents()
+        public async Task<List<EventInfo>> GetAllEvents()
         {
             var allEvents = await eventDatabase.Table<EventInfo>().ToListAsync();
-            var allObservableEvents = new ObservableCollection<EventInfo>();
-            foreach (var todo in allEvents)
-            {
-                allObservableEvents.Add(todo);
-            }
-            return allObservableEvents;
+            return allEvents;
         }
         public async Task AddEvent(EventInfo todo)
         {

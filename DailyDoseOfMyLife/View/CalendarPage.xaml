@@ -3,8 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:cal="clr-namespace:Plugin.Maui.Calendar.Controls;assembly=Plugin.Maui.Calendar"
              x:Class="DailyDoseOfMyLife.View.CalendarPage"
-             Title="CalendarPage">
-
-    <cal:Calendar/>
+             Title="">
+    <VerticalStackLayout>
+        
+        <cal:Calendar/>
+    </VerticalStackLayout>
 
 </ContentPage>

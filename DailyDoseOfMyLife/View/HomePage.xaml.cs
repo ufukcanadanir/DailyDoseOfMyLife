@@ -1,18 +1,51 @@
-using Plugin.Maui.Calendar.Controls;
-using Plugin.Maui.Calendar.Models;
+using DailyDoseOfMyLife.Model;
 namespace DailyDoseOfMyLife.View;
 
 public partial class HomePage : ContentPage
 {
-	public EventCollection Events { get; set; }
+	EventRepository eventRepository;
+    WeatherAPI weatherAPI;
 	public HomePage()
 	{
-		Events = new EventCollection();
-		InitializeComponent();
-	}
-
-    private void AddEventButton_Clicked(object sender, EventArgs e)
+        InitializeComponent();
+        eventRepository = new EventRepository();
+        weatherAPI = new WeatherAPI();
+    }
+    protected override async void OnAppearing()
     {
-		Shell.Current.GoToAsync("AddEventPage");
+        Dictionary<string, string> weatherInfo = await weatherAPI.GetWeather();
+        base.OnAppearing();
+        var todos = new List<EventInfo>(await eventRepository.GetAllEvents());
+        TodoList.ItemsSource = todos;
+        Temperature.Text = weatherInfo["Temperature"].ToString()+ "°C";
+        WeatherState.Text = weatherInfo["WeatherState"].ToString().ToUpper();
+
+    }
+
+
+    private async void AddButton_Clicked(object sender, EventArgs e)
+    {
+        if (string.IsNullOrWhiteSpace(todoEntry.Text))
+        {
+            await DisplayAlert("Error", $"Following fields can not be empty: {todoEntry}?", "OK");
+        }
+        else
+        {
+            EventInfo todos = new EventInfo
+            {
+                Name = todoEntry.Text,
+                Date = DateTime.Now,
+                isChecked = false
+            };
+
+
+            await eventRepository.AddEvent(todos);
+            LoadTodos();
+        }
+    }
+    private async void LoadTodos()
+    {
+        var todos= new List<EventInfo>(await eventRepository.GetAllEvents());
+        TodoList.ItemsSource = todos;
     }
 }

@@ -2,8 +2,37 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DailyDoseOfMyLife.View.HomePage"
-             Title="HomePage">
-    <VerticalStackLayout Padding="10">
-        <Button Text="Add Event" Clicked="AddEventButton_Clicked"/>
+             Title="Welcome">
+    <VerticalStackLayout Spacing="10" Padding="20">
+        <HorizontalStackLayout>
+            <VerticalStackLayout>
+                <Label Padding="8" TextColor="Black" FontSize="Micro" FontAttributes="Bold" x:Name="Temperature" />
+            <Label Padding="8" FontSize="Micro" TextColor="DarkSlateBlue" x:Name="WeatherState"/>
+            </VerticalStackLayout>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Spacing="10">
+            <Entry x:Name="todoEntry" Placeholder="Add a new todo"/>
+            <Button x:Name="addTodo" Text="+" BackgroundColor="LightGrey" Clicked="AddButton_Clicked"/>
+        </HorizontalStackLayout>
+        <ListView x:Name="TodoList" RowHeight="50" 
+                  SeparatorColor="Silver" SeparatorVisibility="Default">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <!--Ekrandaki Todo List icin yazilan kisim -->
+                            <VerticalStackLayout Grid.Column="0">
+                            <HorizontalStackLayout>
+                                <CheckBox/>
+                                <Label Text="{Binding Name}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                    </ViewCell>
+                </DataTemplate>
+
+            </ListView.ItemTemplate>
+        </ListView>
     </VerticalStackLayout>
+
+
+        
 </ContentPage>
