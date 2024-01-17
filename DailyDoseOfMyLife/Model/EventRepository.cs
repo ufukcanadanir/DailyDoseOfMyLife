@@ -12,7 +12,8 @@ namespace DailyDoseOfMyLife.Model
     {
         private SQLiteAsyncConnection eventDatabase;
         private string databaseName = "events.db3";
-
+        private static bool isLoggedIn = false;
+        public static string username="";
         public EventRepository()
         {
             string dbPath = Path.Combine(FileSystem.AppDataDirectory, databaseName);
@@ -28,6 +29,20 @@ namespace DailyDoseOfMyLife.Model
         {
             await eventDatabase.InsertAsync(todo);
         }
+        
+        public async Task<List<EventInfo>> TodaysTodos()
+        {
+            var allevents = await eventDatabase.Table<EventInfo>().ToListAsync();
+            List<EventInfo> todayTodos = new List<EventInfo>();
+            foreach (EventInfo oneEvent in allevents)
+            {
+                if (oneEvent.isChecked == false && oneEvent.Date==DateTime.Today && oneEvent.userName == username)
+                {
+                    todayTodos.Add(oneEvent);
+                }
+            }
+            return todayTodos;
+        }
 
         public async Task Update(EventInfo todo)
         {
@@ -39,6 +54,34 @@ namespace DailyDoseOfMyLife.Model
             await eventDatabase.DeleteAsync(todo);
         }
 
+        public async Task ChangeIsChecked(EventInfo todo)
+        {
+            todo.isChecked= true;
+            await eventDatabase.UpdateAsync(todo);
+        }
+        public void LoggingIn()
+        {
+            if (isLoggedIn == false)
+            
+             Shell.Current.GoToAsync("LoginPage");
+            
 
+        }
+        public void LoggedIn()
+        {
+            isLoggedIn = true;
+        }
+        public void LogOut()
+        {
+            isLoggedIn = false;
+            SetUsername("");
+        }
+
+        public void SetUsername(string newUsername)
+        {
+            username = newUsername;
+        }
+
+        public string GetUsername() { return username; }
     }
 }

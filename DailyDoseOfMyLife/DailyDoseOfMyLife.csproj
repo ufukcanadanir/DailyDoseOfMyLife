@@ -70,7 +70,8 @@
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
-		<PackageReference Include="Plugin.Maui.Calendar" Version="1.0.11" />
+		<PackageReference Include="Plugin.Maui.Calendar" Version="1.1.1" />
+		<PackageReference Include="RestSharp" Version="110.2.0" />
 		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
 	</ItemGroup>
 
@@ -79,6 +80,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\ProfilePage.xaml">

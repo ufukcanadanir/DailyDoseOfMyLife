@@ -10,15 +10,16 @@ namespace DailyDoseOfMyLife.Model
 {
     internal class WeatherAPI
     {
-        private string wheaterApiKey = "573951b7b1eb092be33e4c7699fed4d1";
+        private string weatherApiKey = "573951b7b1eb092be33e4c7699fed4d1";
         private string? latitude;
         private string? longtitude;
         private int tempInt;
         private string? temperature;
         public async Task<Dictionary<string, string>> GetWeather()
         {
+
             // To find latitude and longtitude
-            // to get location setting -> location permission is needed
+            // to get location setting -> location permission is needed on Windows
             Location location = await Geolocation.Default.GetLastKnownLocationAsync();
             if (location != null)
             {
@@ -26,7 +27,7 @@ namespace DailyDoseOfMyLife.Model
                 longtitude = location.Longitude.ToString();
             }
                 Dictionary<string, string> weatherInfo = new Dictionary<string, string>();
-                string connection = $"https://api.openweathermap.org/data/2.5/weather?lat={latitude}&lon={longtitude}&mode=xml&appid={wheaterApiKey}&units=metric";
+                string connection = $"https://api.openweathermap.org/data/2.5/weather?lat={latitude}&lon={longtitude}&mode=xml&appid={weatherApiKey}&units=metric";
                 XDocument weather = XDocument.Load(connection);
                 if(int.TryParse(weather.Descendants("temperature").ElementAt(0).Attribute("value").Value, out tempInt))
             {

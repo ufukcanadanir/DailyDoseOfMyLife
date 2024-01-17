@@ -3,10 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:cal="clr-namespace:Plugin.Maui.Calendar.Controls;assembly=Plugin.Maui.Calendar"
              x:Class="DailyDoseOfMyLife.View.CalendarPage"
-             Title="">
+             Title=""
+             >
     <VerticalStackLayout>
-        
-        <cal:Calendar/>
+        <Button x:Name="AddEvent" BackgroundColor="Green" Text="Add Event" TextColor="AliceBlue" Clicked="AddEvent_Clicked" HorizontalOptions="Center" VerticalOptions="Center"/>
+        <cal:Calendar Events="{Binding TodoList}" EventsScrollViewVisible="True">
+            <cal:Calendar.EventTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout>
+                        <Label Text="{Binding Name}"/>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </cal:Calendar.EventTemplate>
+        </cal:Calendar>
     </VerticalStackLayout>
 
 </ContentPage>

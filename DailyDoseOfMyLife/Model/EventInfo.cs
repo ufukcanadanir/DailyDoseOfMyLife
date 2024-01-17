@@ -14,6 +14,7 @@ namespace DailyDoseOfMyLife.Model
 
         public string  Name { get; set; }
         public bool isChecked {  get; set; }
+        public string userName { get; set; }
         public DateTime Date { get; set; }
     }
 }

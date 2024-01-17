@@ -3,18 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DailyDoseOfMyLife.View.AddEventPage"
              Title="AddEventPage">
-    <VerticalStackLayout>
+    <VerticalStackLayout Spacing="8" Padding="40">
         <Frame BorderColor="Silver" Padding="10,2,10,2" >
             <HorizontalStackLayout>
-                <Label Text="Name" VerticalOptions="Center" WidthRequest="100"></Label>
+                <Label Text="Event" VerticalOptions="Center" WidthRequest="100"></Label>
                 <Entry x:Name="NameEntry" VerticalOptions="Center" WidthRequest="200"></Entry>
             </HorizontalStackLayout>
         </Frame>
 
         <Frame BorderColor="Silver" Padding="10,2,10,2" >
             <HorizontalStackLayout>
-                <Label Text="Description" VerticalOptions="Center" WidthRequest="100"></Label>
-                <Entry x:Name="DescriptionEntry" VerticalOptions="Center" WidthRequest="200"></Entry>
+                <Label Text="Date" VerticalOptions="Center" WidthRequest="100"></Label>
+                <DatePicker x:Name="DatePicker" MinimumDate="01/01/2024"
+            MaximumDate="12/31/2034"
+            Date="{Binding todaysDate}" />
             </HorizontalStackLayout>
         </Frame>
         <Button Text="Save" x:Name="SaveButton" Clicked="SaveButton_Clicked"></Button>

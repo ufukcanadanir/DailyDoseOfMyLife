@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using DailyDoseOfMyLife.View;
+using Microsoft.Extensions.Logging;
 
 namespace DailyDoseOfMyLife
 {
@@ -19,6 +20,11 @@ namespace DailyDoseOfMyLife
     		builder.Logging.AddDebug();
 #endif
 
+            builder.Services.AddSingleton<HomePage>();
+            builder.Services.AddSingleton<AddEventPage>();
+            builder.Services.AddSingleton<CalendarPage>();
+            builder.Services.AddSingleton<ProfilePage>();
+            builder.Services.AddTransient<LoginPage>();
             return builder.Build();
         }
     }

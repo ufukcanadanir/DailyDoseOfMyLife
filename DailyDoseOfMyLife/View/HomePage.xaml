@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DailyDoseOfMyLife.View.HomePage"
-             Title="Welcome">
+             Title="Welcome"
+             >
     <VerticalStackLayout Spacing="10" Padding="20">
         <HorizontalStackLayout>
             <VerticalStackLayout>
@@ -22,8 +23,8 @@
                         <!--Ekrandaki Todo List icin yazilan kisim -->
                             <VerticalStackLayout Grid.Column="0">
                             <HorizontalStackLayout>
-                                <CheckBox/>
-                                <Label Text="{Binding Name}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                <CheckBox CheckedChanged="CheckBox_CheckedChanged"/>
+                                <Label x:Name="TodoLabel" TextColor="{Binding Color}" Text="{Binding Name}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                             </HorizontalStackLayout>
                             </VerticalStackLayout>
                     </ViewCell>

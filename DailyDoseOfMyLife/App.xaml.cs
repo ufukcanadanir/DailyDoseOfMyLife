@@ -1,4 +1,6 @@
-﻿namespace DailyDoseOfMyLife
+﻿using DailyDoseOfMyLife.View;
+
+namespace DailyDoseOfMyLife
 {
     public partial class App : Application
     {
